@@ -1,0 +1,22 @@
+<div class="btn-group uib-select" uib-dropdown>
+
+    <!-- button style dropdown -->
+    <button type="button"
+            class="btn btn-default" uib-dropdown-toggle>
+        <span class="content">{{uibOptions[ngModel] || empty || 'Select value'}}</span><span class="caret"/>
+    </button>
+
+    <!-- dropdown items -->
+    <ul class="dropdown-menu" role="menu">
+        <li ng-show="empty">
+            <a href="#"
+               ng-click="select('')">{{empty}}</a>
+        </li>
+        <li ng-show="empty" class="divider"></li>
+        <li ng-repeat="(key, value) in uibOptions">
+            <a href="#"
+               ng-click="select(key)">{{value}}</a>
+        </li>
+    </ul>
+
+</div>

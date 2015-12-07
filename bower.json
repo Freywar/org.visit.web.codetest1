@@ -1,0 +1,17 @@
+{
+  "name": "org.visit.web.codetest1",
+  "version": "0.1.0",
+  "authors": [
+    "Freywar"
+  ],
+  "description": "Test project for Teknovisio Oy",
+  "main": "index.html",
+  "devDependencies": {
+    "angular": "~1.4.8",
+    "angular-animate": "~1.4.8",
+    "angular-bootstrap": "~0.14.3",
+    "bootstrap": "~3.3.6",
+    "BubbleChart": "https://github.com/Freywar/BubbleChart.git#^0.1.1",
+    "crypto-js": "~3.1.5"
+  }
+}

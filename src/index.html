@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html ng-app="TeknovisioDemo">
+<head>
+
+
+    <!-- OAuth 1.0 Dependencies -->
+    <script type="text/javascript"
+            src="external/crypto-js.js"></script>
+    <script type="text/javascript"
+            src="external/hmac-sha1.js"></script>
+    <script type="text/javascript"
+            src="external/oauth-1.0a.js"></script>
+    <!-- Angular Dependencies -->
+    <script type="text/javascript"
+            src="external/angular.min.js"></script>
+    <script type="text/javascript"
+            src="external/angular-animate.min.js"></script>
+
+    <link rel="stylesheet" href="external/bootstrap.min.css">
+
+
+    <script type="text/javascript"
+            src="external/ui-bootstrap.min.js"></script>
+    <script type="text/javascript"
+            src="external/ui-bootstrap-tpls.min.js"></script>
+
+    <script type="text/javascript"
+            src="external/bubblechart.js"></script>
+
+
+    <script type="text/javascript" src="app.tpls.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <link rel="stylesheet" href="app.css">
+
+</head>
+<body ng-controller="MainCtrl"
+      style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;"
+      unselectable="on"
+      onselectstart="return false;">
+
+<table class="main">
+    <tr>
+        <td class="sidebar">
+
+            <label>X Axis values:</label>
+            <uib-select
+                    ng-model="xDataType"
+                    uib-options="dataTypes"
+                    empty="None">
+            </uib-select>
+            <br/>
+            <label>Y Axis values:</label>
+            <uib-select
+                    ng-model="yDataType"
+                    uib-options="dataTypes"
+                    empty="None">
+            </uib-select>
+            <br/>
+            <label>Color values:</label>
+            <uib-select
+                    ng-model="cDataType"
+                    uib-options="dataTypes"
+                    empty="None">
+            </uib-select>
+            <br/>
+            <label>Radius values:</label>
+            <uib-select
+                    ng-model="rDataType"
+                    uib-options="dataTypes"
+                    empty="None">
+            </uib-select>
+            <br/>
+
+            <label>From:</label>
+            <uib-datepicker-small ng-model="from" max-date="to" format="'dd-MMMM-yyyy'"></uib-datepicker-small>
+            <br/>
+
+            <label>To:</label>
+            <uib-datepicker-small ng-model="to" min-date="from" format="'dd-MMMM-yyyy'"></uib-datepicker-small>
+            <br/>
+
+            <button type="button" class="btn btn-primary" ng-click="update()">Update</button>
+            <br/>
+            <br/>
+            <uib-alert ng-show="error">Error occured. Try again.</uib-alert>
+
+            <label class="footer">
+                Wheel Up/Down: Zoom in/out.<br/>
+                LMB: Drag visible area.<br/>
+                Dbl LMB on Bubble: Drill down.<br/>
+                Shift + Dbl LMB on Bubble: Drill up.
+            </label>
+        </td>
+        <td id="visualizer" class="visualizer">
+            <bubble-chart ng-model="bubbleChartData"
+                          ng-dblclick="args.shiftKey ?  drillUp() : drillDown(sender.getPath()[0])"></bubble-chart>
+        </td>
+    </tr>
+</table>
+
+<div class="blocker" ng-show="loading">
+    <div class="waiter"></div>
+</div>
+</body>
+</html>
